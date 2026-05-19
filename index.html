@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gousia Fatima — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --coral: #C8543A;
+    --coral-light: #E8927C;
+    --coral-pale: #FAF0ED;
+    --beige: #C8B8A2;
+    --beige-light: #F5F0EA;
+    --dark: #1A1A1A;
+    --mid: #4A4A4A;
+    --muted: #8A8A8A;
+    --white: #FFFFFF;
+    --off: #FDFCFA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(253,252,250,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,184,162,0.3);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--dark); text-decoration: none;
+  }
+  .nav-logo span { color: var(--coral); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--coral); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    padding: 6rem 4rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero-tag {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-tag::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--coral);
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--dark); margin-bottom: 0.2rem;
+  }
+  .hero-name em { color: var(--coral); font-style: italic; }
+  .hero-desc {
+    font-size: 1rem; line-height: 1.75; color: var(--mid);
+    max-width: 420px; margin: 1.8rem 0 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 0.85rem 2rem; background: var(--coral); color: white;
+    border: none; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #b34730; transform: translateY(-1px); }
+  .btn-outline {
+    padding: 0.85rem 2rem; background: transparent;
+    border: 1px solid var(--beige); color: var(--mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--coral); color: var(--coral); }
+
+  .hero-right {
+    background: var(--beige-light);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 4rem 3rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-right::before {
+    content: 'GF';
+    position: absolute; bottom: -2rem; right: -1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18rem; font-weight: 600; color: rgba(200,184,162,0.18);
+    line-height: 1; pointer-events: none; user-select: none;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    position: relative; z-index: 1;
+  }
+  .stat-card {
+    background: white; padding: 1.8rem 1.5rem;
+    border-left: 3px solid var(--coral);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 600; color: var(--coral); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .hero-contact {
+    margin-top: 3rem; position: relative; z-index: 1;
+    padding-top: 2rem; border-top: 1px solid rgba(200,184,162,0.5);
+  }
+  .hero-contact p {
+    font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-contact a {
+    color: var(--coral); text-decoration: none; font-size: 0.9rem;
+    display: block; margin-bottom: 0.3rem;
+  }
+  .hero-contact a:hover { text-decoration: underline; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 1px; background: var(--coral);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+    color: var(--dark); margin-bottom: 3rem; line-height: 1.15;
+  }
+  .section-title em { color: var(--coral); font-style: italic; }
+
+  /* ── ABOUT ── */
+  .about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p {
+    font-size: 1rem; line-height: 1.85; color: var(--mid); margin-bottom: 1.2rem;
+  }
+  .about-text p strong { color: var(--dark); font-weight: 500; }
+  .about-highlights { display: flex; flex-direction: column; gap: 1.5rem; }
+  .highlight-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding-bottom: 1.5rem; border-bottom: 1px solid var(--beige-light);
+  }
+  .highlight-item:last-child { border-bottom: none; }
+  .highlight-icon {
+    width: 40px; height: 40px; background: var(--coral-pale);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 1.1rem;
+  }
+  .highlight-text h4 { font-size: 0.9rem; font-weight: 500; color: var(--dark); }
+  .highlight-text p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.5; }
+
+  /* ── SKILLS ── */
+  .skills { background: var(--off); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .skill-group {
+    background: white; padding: 2rem;
+    border-top: 3px solid var(--coral);
+  }
+  .skill-group h3 {
+    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1.2rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    padding: 0.38rem 0.85rem; background: var(--beige-light);
+    font-size: 0.8rem; color: var(--mid);
+    border: 1px solid rgba(200,184,162,0.4);
+    transition: background 0.2s, color 0.2s;
+  }
+  .skill-tag:hover { background: var(--coral-pale); color: var(--coral); }
+
+  /* ── PROJECTS ── */
+  .projects { background: white; }
+  .projects-list { display: flex; flex-direction: column; gap: 0; }
+  .project-item {
+    display: grid; grid-template-columns: 80px 1fr auto;
+    gap: 2rem; align-items: start;
+    padding: 2.5rem 0; border-bottom: 1px solid var(--beige-light);
+    transition: background 0.2s;
+  }
+  .project-item:first-child { border-top: 1px solid var(--beige-light); }
+  .project-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; color: rgba(200,84,58,0.2);
+    line-height: 1; padding-top: 0.2rem;
+  }
+  .project-body h3 {
+    font-size: 1.15rem; font-weight: 500; color: var(--dark); margin-bottom: 0.5rem;
+  }
+  .project-body p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; max-width: 560px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .project-tag {
+    padding: 0.25rem 0.7rem; background: var(--coral-pale);
+    font-size: 0.72rem; color: var(--coral);
+    letter-spacing: 0.04em;
+  }
+  .project-arrow {
+    font-size: 1.5rem; color: var(--beige); align-self: center;
+    transition: color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .project-item:hover .project-arrow { color: var(--coral); transform: translate(3px,-3px); }
+
+  /* ── EDUCATION ── */
+  .education { background: var(--beige-light); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .edu-card {
+    background: white; padding: 2.5rem;
+    border-left: 4px solid var(--coral); position: relative;
+  }
+  .edu-year {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--coral); margin-bottom: 0.8rem;
+  }
+  .edu-card h3 { font-size: 1.05rem; font-weight: 500; color: var(--dark); margin-bottom: 0.3rem; }
+  .edu-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 300; color: var(--mid); margin-bottom: 1rem;
+  }
+  .edu-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+  .edu-cgpa {
+    display: inline-block; margin-top: 1rem;
+    padding: 0.4rem 1rem; background: var(--coral-pale);
+    font-size: 0.85rem; font-weight: 500; color: var(--coral);
+  }
+  .coursework { margin-top: 1.2rem; }
+  .coursework h5 {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.6rem;
+  }
+  .course-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .course-pill {
+    padding: 0.25rem 0.65rem; border: 1px solid rgba(200,184,162,0.6);
+    font-size: 0.75rem; color: var(--mid);
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements { background: white; }
+  .ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .ach-card {
+    padding: 2rem; background: var(--off);
+    position: relative; overflow: hidden;
+  }
+  .ach-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: var(--coral);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .ach-card:hover::after { transform: scaleX(1); }
+  .ach-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .ach-card h3 { font-size: 0.95rem; font-weight: 500; color: var(--dark); margin-bottom: 0.5rem; }
+  .ach-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--dark); color: white; }
+  .contact .section-label { color: var(--coral-light); }
+  .contact .section-label::before { background: var(--coral-light); }
+  .contact .section-title { color: white; }
+  .contact .section-title em { color: var(--coral-light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-text p { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 1.5rem; border: 1px solid rgba(255,255,255,0.1);
+    text-decoration: none; color: white;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--coral); background: rgba(200,84,58,0.08); }
+  .contact-link-icon { font-size: 1rem; color: var(--coral-light); }
+  .contact-link-text { font-size: 0.85rem; }
+  .contact-link-text small { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .resume-box {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    padding: 3rem; text-align: center;
+  }
+  .resume-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; color: white; margin-bottom: 0.8rem;
+  }
+  .resume-box p { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 2rem; line-height: 1.6; }
+  .btn-resume {
+    display: inline-block; padding: 1rem 2.5rem;
+    background: var(--coral); color: white; text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .btn-resume:hover { background: #b34730; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111; padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+  footer span { color: var(--coral); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag { animation: fadeUp 0.6s ease both; }
+  .hero-name { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-btns { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.2s ease both; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { padding: 3rem 1.5rem; }
+    .hero-right::before { font-size: 12rem; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid, .edu-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .ach-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Gousia <span>Fatima</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Software Engineer &amp; Developer</div>
+    <h1 class="hero-name">
+      Gousia<br>
+      <em>Fatima</em>
+    </h1>
+    <p class="hero-desc">
+      Computer Science undergraduate passionate about building intelligent, elegant web applications. I craft full-stack experiences with Python, Django &amp; FastAPI — clean code, thoughtful design.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Full-Stack Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">7.5</div>
+        <div class="stat-label">CGPA / 10.0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Gemini Integration</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Curiosity to Learn</div>
+      </div>
+    </div>
+    <div class="hero-contact">
+      <p>Open to internship opportunities</p>
+      <a href="mailto:fatimasiya31@gmail.com">fatimasiya31@gmail.com</a>
+      <a href="https://github.com/gousiafatima19" target="_blank">github.com/gousiafatima19</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Crafting digital<br><em>experiences with purpose</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm <strong>Gousia Fatima</strong>, a final-year Computer Science undergraduate at Shadan Women's College of Engineering &amp; Technology, Hyderabad. I specialise in full-stack web development using Python, Django, and FastAPI.
+      </p>
+      <p>
+        My journey into software engineering began with a curiosity about how the web works — that curiosity has grown into a deep passion for building applications that are not just functional, but <strong>thoughtfully designed</strong> and scalable.
+      </p>
+      <p>
+        I'm particularly excited about the intersection of <strong>AI and web development</strong> — integrating intelligent features like Gemini API into real-world applications to create smarter user experiences.
+      </p>
+      <p>
+        When I'm not coding, I'm exploring open-source projects, reading about emerging tech, and sharpening my DSA skills. I'm actively seeking a <strong>software engineering internship</strong> where I can contribute meaningfully and grow.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item">
+        <div class="highlight-icon">🐍</div>
+        <div class="highlight-text">
+          <h4>Python & Django Specialist</h4>
+          <p>Building robust backend systems with clean architecture, REST APIs, and database design.</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">⚡</div>
+        <div class="highlight-text">
+          <h4>FastAPI Microservices</h4>
+          <p>Designing high-performance async APIs for real-time applications and AI integrations.</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">🤖</div>
+        <div class="highlight-text">
+          <h4>AI Integration Enthusiast</h4>
+          <p>Leveraging Gemini API and modern AI tools to build intelligent, context-aware features.</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">🎨</div>
+        <div class="highlight-text">
+          <h4>Frontend Sensibility</h4>
+          <p>Creating responsive, accessible UI with Bootstrap and a strong eye for user experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title">Technical <em>skills</em></h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Frameworks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">Bootstrap 5</span>
+        <span class="skill-tag">REST APIs</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Database & Tools</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">SQLite</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Postman</span>
+        <span class="skill-tag">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>AI & APIs</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Gemini API</span>
+        <span class="skill-tag">GitHub API</span>
+        <span class="skill-tag">AI Chatbots</span>
+        <span class="skill-tag">AI Integration</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Concepts</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">OOP</span>
+        <span class="skill-tag">MVC Architecture</span>
+        <span class="skill-tag">Authentication</span>
+        <span class="skill-tag">CRUD</span>
+        <span class="skill-tag">Responsive Design</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Soft Skills</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Problem Solving</span>
+        <span class="skill-tag">Team Collaboration</span>
+        <span class="skill-tag">Communication</span>
+        <span class="skill-tag">Adaptability</span>
+        <span class="skill-tag">Self-motivated</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-label">Work</div>
+  <h2 class="section-title">Featured <em>projects</em></h2>
+  <div class="projects-list">
+
+    <div class="project-item">
+      <div class="project-num">01</div>
+      <div class="project-body">
+        <h3>AI Portfolio Website</h3>
+        <p>A modern AI-powered personal portfolio with an embedded Gemini chatbot that lets recruiters ask questions about skills and projects in real time. Features GitHub API integration for live repo display and a FastAPI microservice for low-latency AI responses.</p>
+        <div class="project-tags">
+          <span class="project-tag">Django</span>
+          <span class="project-tag">FastAPI</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Gemini API</span>
+          <span class="project-tag">Bootstrap</span>
+          <span class="project-tag">GitHub API</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-num">02</div>
+      <div class="project-body">
+        <h3>Personal Finance Tracker</h3>
+        <p>A comprehensive full-stack finance management app with category budgeting, recurring transactions, CSV export, and a dynamic analytics dashboard. Built with a REST API layer for future mobile integration and secured with Django authentication.</p>
+        <div class="project-tags">
+          <span class="project-tag">Django</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">Bootstrap</span>
+          <span class="project-tag">REST APIs</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-num">03</div>
+      <div class="project-body">
+        <h3>Hospital Management System</h3>
+        <p>A full-stack multi-role hospital platform supporting Admin, Doctor, and Patient dashboards with role-based access control. Features smart appointment booking with real-time availability checking, conflict resolution, and comprehensive record management.</p>
+        <div class="project-tags">
+          <span class="project-tag">Django</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Bootstrap</span>
+          <span class="project-tag">HTML/CSS</span>
+          <span class="project-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="section-label">Background</div>
+  <h2 class="section-title">Education &amp; <em>learning</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-year">2022 — 2026</div>
+      <h3>B.Tech in Computer Science & Engineering</h3>
+      <h4>Shadan Women's College of Engineering &amp; Technology</h4>
+      <p>Hyderabad, Telangana — A focused four-year programme covering software engineering, data structures, computer networks, databases, and web technologies.</p>
+      <div class="edu-cgpa">CGPA: 7.5 / 10.0</div>
+      <div class="coursework">
+        <h5>Key Coursework</h5>
+        <div class="course-list">
+          <span class="course-pill">Data Structures</span>
+          <span class="course-pill">Algorithms</span>
+          <span class="course-pill">DBMS</span>
+          <span class="course-pill">Computer Networks</span>
+          <span class="course-pill">Operating Systems</span>
+          <span class="course-pill">OOP</span>
+          <span class="course-pill">Web Technologies</span>
+          <span class="course-pill">Software Engineering</span>
+        </div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">Ongoing</div>
+      <h3>Self-Learning & Development</h3>
+      <h4>Online Platforms &amp; Open Source</h4>
+      <p>Continuously expanding skills through hands-on projects, open-source contributions on GitHub, and online certifications. Deeply invested in the intersection of AI and web development.</p>
+      <div class="coursework" style="margin-top:1.5rem">
+        <h5>Learning Focus Areas</h5>
+        <div class="course-list">
+          <span class="course-pill">AI &amp; ML Integration</span>
+          <span class="course-pill">System Design</span>
+          <span class="course-pill">DSA Practice</span>
+          <span class="course-pill">API Design</span>
+          <span class="course-pill">Cloud Basics</span>
+          <span class="course-pill">Open Source</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements" id="achievements">
+  <div class="section-label">Recognition</div>
+  <h2 class="section-title">Achievements &amp; <em>milestones</em></h2>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <div class="ach-icon">🏆</div>
+      <h3>Add Your Certification</h3>
+      <p>e.g. Google Python Certificate, NPTEL, Coursera Full-Stack, AWS Cloud Practitioner — replace this with your actual certification.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">💡</div>
+      <h3>Problem Solving</h3>
+      <p>Solved X+ coding challenges on LeetCode and HackerRank, strengthening DSA fundamentals and preparing for technical interviews.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🚀</div>
+      <h3>Hackathon / Competition</h3>
+      <p>Add your hackathon participation or wins here — e.g. Smart India Hackathon, college-level competitions, coding contests.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🌐</div>
+      <h3>Open Source Contributor</h3>
+      <p>Active GitHub contributor maintaining personal projects with clean code, detailed READMEs, and consistent version-controlled development.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🎓</div>
+      <h3>Academic Excellence</h3>
+      <p>Maintained a strong CGPA of 7.5/10 while simultaneously building multiple full-stack production-grade projects.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🤝</div>
+      <h3>Community & Clubs</h3>
+      <p>Active member of college tech clubs and communities — workshops, seminars, and peer mentoring in web development.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">Get in <em>touch</em></h2>
+  <div class="contact-grid">
+    <div class="contact-text">
+      <p>I'm currently open to software engineering internship opportunities. Whether you have a project in mind, a role to discuss, or just want to say hello — I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:fatimasiya31@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          <div class="contact-link-text">
+            <small>Email</small>
+            fatimasiya31@gmail.com
+          </div>
+        </a>
+        <a href="tel:+917981158776" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          <div class="contact-link-text">
+            <small>Phone</small>
+            +91-7981158776
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/gousia-fatima-21289a327" target="_blank" class="contact-link">
+          <span class="contact-link-icon">🔗</span>
+          <div class="contact-link-text">
+            <small>LinkedIn</small>
+            linkedin.com/in/gousia-fatima-21289a327
+          </div>
+        </a>
+        <a href="https://github.com/gousiafatima19" target="_blank" class="contact-link">
+          <span class="contact-link-icon">💻</span>
+          <div class="contact-link-text">
+            <small>GitHub</small>
+            github.com/gousiafatima19
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="resume-box">
+      <h3>Download My Resume</h3>
+      <p>A detailed one-page resume covering my skills, projects, education, and achievements — ready to share with recruiters.</p>
+      <a href="resume.pdf" download class="btn-resume">⬇ Download Resume</a>
+      <p style="margin-top:1.5rem; font-size:0.75rem; color:rgba(255,255,255,0.3);">Available as PDF · Last updated 2025</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Gousia Fatima</span>. All rights reserved.</p>
+  <p>Designed with care · Hyderabad, India</p>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-group, .project-item, .edu-card, .ach-card, .highlight-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
